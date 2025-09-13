@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Bright Light</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo">Bright Light</a>
+
+        <!-- Hamburger Menu -->
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Contact Us</h1>
+        <p>Let's discuss your electrical needs</p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container">
+        <!-- Enhanced Contact Info -->
+        <div class="contact-info fade-in">
+          <h2>Get In Touch</h2>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <h4>Phone</h4>
+              <p><a href="tel:0708918559">0708 918 559</a></p>
+              <p><a href="tel:0798084647">0798 084 647</a></p>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <h4>Email</h4>
+              <p>
+                <a href="mailto:reaganwekesa903@gmail.com"
+                  >reaganwekesa903@gmail.com</a
+                >
+              </p>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-icon">🕒</span>
+              <h4>Business Hours</h4>
+              <p>Mon - Fri: 8AM - 6PM</p>
+              <p>Sun: 9AM - 2PM</p>
+            </div>
+          </div>
+
+          <div class="business-hours">
+            <h4>24/7 Emergency Service</h4>
+            <p>For urgent electrical issues, call us anytime!</p>
+          </div>
+        </div>
+
+        <form
+          class="contact-form fade-in"
+          action="https://formspree.io/f/xvojnqkk"
+          method="POST"
+        >
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input type="tel" name="phone" placeholder="Your Phone" />
+          </div>
+          <div class="form-group">
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2024 Bright Light Electrical Consultancy. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
