@@ -52,8 +52,8 @@
               <span class="contact-icon">✉️</span>
               <h4>Email</h4>
               <p>
-                <a href="mailto:reaganwekesa903@gmail.com"
-                  >reaganwekesa903@gmail.com</a
+                <a href="mailto:brightlighthouseelectrical@gmail.com"
+                  >brightlighthouseelectrical@gmail.com</a
                 >
               </p>
             </div>
@@ -73,9 +73,12 @@
         </div>
 
         <form
+          id="contactForm"
           class="contact-form fade-in"
-          action="https://formspree.io/f/xvojnqkk"
+          action="https://script.google.com/macros/s/AKfycbymLW3-uH_sxmzk1_BPLNq5Py9cP4UL67--EaH3DZ-MN7VDrRDTJm1kO8105E0swwBQ/exec"
           method="POST"
+          data-redirect-delay="9000"
+          data-message-dismiss="9000"
         >
           <div class="form-group">
             <input type="text" name="name" placeholder="Your Name" required />
@@ -99,7 +102,9 @@
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            Send Message
+          </button>
         </form>
       </div>
     </section>
