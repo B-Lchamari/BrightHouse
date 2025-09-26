@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Project Samples — BrightHouse</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo">Bright Light</a>
+
+        <!-- Hamburger Menu -->
+        <div
+          class="hamburger"
+          tabindex="0"
+          role="button"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="projects-hero hero">
+        <div class="hero-content">
+          <h1>Recent Projects</h1>
+          <p>
+            Selected work and completed projects showcasing our capabilities.
+          </p>
+        </div>
+      </section>
+
+      <section class="projects-section">
+        <!-- PROJECTS_START -->
+        <div class="projects-grid">
+        </div>
+<!-- PROJECTS_END -->
+      </section>
+
+      <!-- Lightbox overlay (simple) -->
+      <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close">✕</button>
+        <div
+          class="lightbox-media"
+          role="img"
+          aria-label="Project preview"
+        ></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> BrightHouse. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+      // Setup tiles background from data attribute and simple lightbox
+      (function () {
+        const tiles = document.querySelectorAll(".project-tile");
+        const lightbox = document.getElementById("lightbox");
+        const lbMedia = lightbox && lightbox.querySelector(".lightbox-media");
+        const lbClose = lightbox && lightbox.querySelector(".lightbox-close");
+
+        tiles.forEach((tile) => {
+          // prefer data-img (image URL) over data-media (gradient/string)
+          const img = tile.getAttribute("data-img");
+          const media = img ? `url('${img}')` : tile.getAttribute("data-media");
+          const mediaEl = tile.querySelector(".tile-media");
+          if (mediaEl) mediaEl.style.background = media;
+
+          tile.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (!lightbox) return;
+            // use image URL directly in lightbox when available
+            lbMedia.style.background = media;
+            lightbox.setAttribute("aria-hidden", "false");
+            lbClose.focus();
+          });
+        });
+
+        function closeLB() {
+          if (!lightbox) return;
+          lightbox.setAttribute("aria-hidden", "true");
+        }
+
+        if (lbClose) {
+          lbClose.addEventListener("click", closeLB);
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeLB();
+        });
+      })();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

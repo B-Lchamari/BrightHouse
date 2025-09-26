@@ -1311,3 +1311,232 @@ body {
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
+
+/* Projects gallery styles */
+.projects-section {
+  padding: 40px 0 80px;
+}
+
+/* Projects hero spacing (moved from inline styles in projects.html) */
+.projects-hero {
+  padding: 80px 0 40px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.project-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-media {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 2.2rem;
+}
+
+.project-content {
+  padding: 1.2rem;
+}
+
+.project-content h3 {
+  margin-bottom: 0.6rem;
+  color: var(--primary);
+}
+
+.project-content p {
+  margin-bottom: 0.85rem;
+  color: var(--text);
+}
+
+@media (max-width: 480px) {
+  .project-media {
+    height: 120px;
+    font-size: 1.8rem;
+  }
+}
+
+/* Image-only tile styles */
+.project-tile {
+  display: block;
+  width: 100%;
+  padding-top: 70%; /* aspect ratio box (~7:10) */
+  background: transparent;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.project-tile:focus,
+.project-tile:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+.project-tile .tile-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  transition: transform 400ms ease;
+}
+.project-tile:focus .tile-media,
+.project-tile:hover .tile-media {
+  transform: scale(1.06);
+}
+
+/* Simple lightbox overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 3000;
+}
+.lightbox[aria-hidden="false"] {
+  display: flex;
+}
+.lightbox-media {
+  width: min(90vw, 1100px);
+  height: min(70vh, 700px);
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Projects CTA styles */
+.projects-cta {
+  padding: 40px 0;
+  background: linear-gradient(
+    180deg,
+    rgba(110, 54, 173, 0.06),
+    rgba(26, 61, 142, 0.03)
+  );
+}
+.projects-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.projects-cta-text h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+.projects-cta-text p {
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.projects-cta-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.projects-cta-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .projects-cta-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .projects-cta-actions {
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+/* Preview tiles above CTA */
+.projects-preview {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.projects-preview .preview-tile {
+  display: inline-block;
+  /* larger default size for desktop */
+  width: 170px;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+.projects-preview .preview-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease, filter 300ms ease;
+}
+.projects-preview .preview-tile:focus img,
+.projects-preview .preview-tile:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.05) brightness(1.02);
+}
+.projects-preview .preview-tile:focus {
+  outline: 3px solid rgba(110, 54, 173, 0.18);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .projects-preview .preview-tile {
+    width: 140px;
+    height: 92px;
+  }
+}
+
+@media (max-width: 540px) {
+  .projects-preview {
+    gap: 0.5rem;
+  }
+  .projects-preview .preview-tile {
+    width: 100px;
+    height: 64px;
+  }
+}

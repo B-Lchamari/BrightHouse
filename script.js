@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     
     if (hamburger && navMenu) {
+    // Make hamburger focusable for keyboard users (if not set in HTML)
+    if (!hamburger.hasAttribute('tabindex')) hamburger.setAttribute('tabindex', '0');
+    if (!hamburger.hasAttribute('role')) hamburger.setAttribute('role', 'button');
+    if (!hamburger.hasAttribute('aria-label')) hamburger.setAttribute('aria-label', 'Toggle navigation');
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -69,6 +73,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = '';
             });
         });
+
+    // Keyboard toggle (Enter / Space) for accessibility
+    hamburger.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        hamburger.click();
+      }
+    });
         
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
