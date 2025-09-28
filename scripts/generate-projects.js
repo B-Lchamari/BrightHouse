@@ -9,9 +9,17 @@ function isImage(filename) {
   return /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(filename);
 }
 
+function escapeAttr(s) {
+  return String(s).replace(/"/g, '&quot;');
+}
+
 function buildTileHtml(imgRelPath, idx) {
-  // Use data-img for image and fallback data-media gradient
-  return `          <a href="#" class="project-tile" data-img="${imgRelPath}" data-media="linear-gradient(135deg,var(--primary),var(--accent))" aria-label="Open project image ${idx}">\n            <span class="tile-media" aria-hidden="true"></span>\n          </a>\n`;
+  const imgEsc = escapeAttr(imgRelPath);
+  // emit an <img> inside the tile so the browser preserves aspect ratio
+  // loading=lazy is used to improve initial load. srcset can be added later.
+  return `          <a href="#" class="project-tile" data-img="${imgEsc}" aria-label="Open project image ${idx}">
+            <img class="tile-media" src="${imgEsc}" alt="Project image ${idx}" loading="lazy" />
+          </a>\n`;
 }
 
 // Read projects.html and replace between markers

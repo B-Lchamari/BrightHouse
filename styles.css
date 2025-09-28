@@ -1374,9 +1374,12 @@ body {
 
 /* Image-only tile styles */
 .project-tile {
-  display: block;
+  /* Use flexible box so the <img> inside can preserve natural aspect ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding-top: 70%; /* aspect ratio box (~7:10) */
+  min-height: 180px; /* thumbnail height; image will scale to fit */
   background: transparent;
   position: relative;
   border-radius: 12px;
@@ -1390,17 +1393,20 @@ body {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   outline: none;
 }
-.project-tile .tile-media {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+.project-tile img.tile-media {
+  /* let the browser preserve image aspect ratio; don't crop */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   display: block;
+  object-fit: contain;
   transition: transform 400ms ease;
+  margin: 8px;
 }
-.project-tile:focus .tile-media,
-.project-tile:hover .tile-media {
-  transform: scale(1.06);
+.project-tile:focus img.tile-media,
+.project-tile:hover img.tile-media {
+  transform: scale(1.03);
 }
 
 /* Simple lightbox overlay */
