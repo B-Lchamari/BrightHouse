@@ -1422,13 +1422,25 @@ body {
 .lightbox[aria-hidden="false"] {
   display: flex;
 }
+.lightbox-media-wrap {
+  /* constrain the displayed image to viewport while centering it */
+  max-width: 90vw;
+  max-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
 .lightbox-media {
-  width: min(90vw, 1100px);
-  height: min(70vh, 700px);
-  background-size: cover;
-  background-position: center;
+  /* img element: preserve natural aspect ratio, don't stretch */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  background: transparent;
 }
 .lightbox-close {
   position: absolute;
